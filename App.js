@@ -1,21 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View, 
-  FlatList, Image, ActivityIndicator} from 'react-native';
-import {Card, CardItem} from 'native-base';
+import React, { Component } from 'react';
+import {Provider} from 'react-redux';
+import ApiData from './components/ApiData';
+import store from './redux/store/store';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+export default class App extends Component{
+  render(){
+    return (
+      <Provider store={store}>
+      <ApiData/>
+      </Provider>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
