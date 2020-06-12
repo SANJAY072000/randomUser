@@ -1,5 +1,6 @@
 const initState={
-    data:[]
+    data:[],
+    loader:true
 };
 
 const reducer=(state=initState,action)=>{
@@ -7,7 +8,8 @@ const reducer=(state=initState,action)=>{
         case 'GET_API_DATA':
             return {
                 ...state,
-                data:action.data
+                data:action.data,
+                loader:false
             };
         default:return {...state};
     }
