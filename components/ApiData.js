@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList, 
-    Image, ActivityIndicator, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image} from 'react-native';
 import {Card, CardItem} from 'native-base';
 import {connect} from 'react-redux';
 import getapidatatype from '../redux/action/getapidatatype';
 import axios from 'axios';
 
 class ApiData extends Component{
+
+  componentDidMount(){
+      this.getUser();
+  }
+
   getUser=()=>{
       axios({
           url:'https://randomuser.me/api/?results=50'
@@ -18,14 +22,11 @@ class ApiData extends Component{
   render(){
     return (
       <View style={styles.container}>
-      <TouchableOpacity onPress={this.getUser.bind(this)}>
-      <Text>Hello ApiData</Text>
-      </TouchableOpacity>
-      <FlatList data={this.props.data} 
-      keyExtractor={(item,index)=>index.toString()} 
+      {<FlatList data={this.props.data} 
+      keyExtractor={item=>item.email} 
       renderItem={({item})=>
       <Text>{item.email}</Text>
-    }/>
+    }/>}
       </View>
     );
   }
